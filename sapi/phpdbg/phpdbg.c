@@ -329,7 +329,7 @@ static PHP_FUNCTION(phpdbg_break_file)
 {
 	char    *file = NULL;
 	size_t   flen = 0;
-	long     line;
+	zend_long     line;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS(), "sl", &file, &flen, &line) == FAILURE) {
 		return;
@@ -382,7 +382,7 @@ static PHP_FUNCTION(phpdbg_clear)
 /* {{{ proto void phpdbg_color(integer element, string color) */
 static PHP_FUNCTION(phpdbg_color)
 {
-	long element = 0L;
+	zend_long element = 0L;
 	char *color = NULL;
 	size_t color_len = 0;
 

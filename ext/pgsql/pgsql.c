@@ -3844,7 +3844,7 @@ PHP_FUNCTION(pg_lo_tell)
 PHP_FUNCTION(pg_lo_truncate)
 {
 	zval *pgsql_id = NULL;
-	size_t size;
+	zend_long size;
 	pgLofp *pgsql;
 	int argc = ZEND_NUM_ARGS();
 	int result;
@@ -6449,7 +6449,7 @@ PHP_FUNCTION(pg_convert)
 	zval *pgsql_link, *values;
 	char *table_name;
 	size_t table_name_len;
-	zend_ulong option = 0;
+	zend_long option = 0;
 	PGconn *pg_link;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS(),
@@ -6665,7 +6665,8 @@ PHP_FUNCTION(pg_insert)
 	zval *pgsql_link, *values;
 	char *table;
 	size_t table_len;
-	zend_ulong option = PGSQL_DML_EXEC, return_sql;
+	zend_long option = PGSQL_DML_EXEC;
+    zend_ulong return_sql;
 	PGconn *pg_link;
 	PGresult *pg_result;
 	ExecStatusType status;
@@ -6882,7 +6883,7 @@ PHP_FUNCTION(pg_update)
 	zval *pgsql_link, *values, *ids;
 	char *table;
 	size_t table_len;
-	zend_ulong option =  PGSQL_DML_EXEC;
+	zend_long option =  PGSQL_DML_EXEC;
 	PGconn *pg_link;
 	zend_string *sql = NULL;
 	int argc = ZEND_NUM_ARGS();
@@ -6974,7 +6975,7 @@ PHP_FUNCTION(pg_delete)
 	zval *pgsql_link, *ids;
 	char *table;
 	size_t table_len;
-	zend_ulong option = PGSQL_DML_EXEC;
+	zend_long option = PGSQL_DML_EXEC;
 	PGconn *pg_link;
 	zend_string *sql;
 	int argc = ZEND_NUM_ARGS();
@@ -7106,7 +7107,7 @@ PHP_FUNCTION(pg_select)
 	zval *pgsql_link, *ids;
 	char *table;
 	size_t table_len;
-	zend_ulong option = PGSQL_DML_EXEC;
+	zend_long option = PGSQL_DML_EXEC;
 	PGconn *pg_link;
 	zend_string *sql = NULL;
 	int argc = ZEND_NUM_ARGS();

@@ -28,7 +28,7 @@
    Convert UNIX timestamp to Julian Day */
 PHP_FUNCTION(unixtojd)
 {
-	time_t ts = 0;
+	zend_long ts = 0;
 	struct tm *ta, tmbuf;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS(), "|l", &ts) == FAILURE) {
