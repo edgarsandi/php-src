@@ -196,6 +196,15 @@ static void _breakiter_no_args_ret_int32(
 
 	BREAKITER_METHOD_FETCH_OBJECT;
 
+	printf("*func ....... %s\n\n\n",func_name);
+	printf("bio ....... %s\n\n\n",bio);
+	printf("bio->biter ....... %s\n\n\n",bio->biter);
+//	printf("bio->biter->*func ....... %d\n\n\n",(bio->biter->*func)());
+	if (!(bio->biter->*func)()) {
+		printf("!bio->biter->*func()");
+		return;
+	}
+
 	int32_t res = (bio->biter->*func)();
 
 	RETURN_LONG((zend_long)res);
@@ -259,24 +268,30 @@ U_CFUNC PHP_FUNCTION(breakiter_next)
 	bool no_arg_version = false;
 
 	if (ZEND_NUM_ARGS() == 0) {
+		printf("ZEND_NUM_ARGS() == 0\n\n\n");
 		no_arg_version = true;
 	} else if (ZEND_NUM_ARGS() == 1) {
+		printf("ZEND_NUM_ARGS() == 1\n\n\n");
 		zval *arg;
 		int res = zend_parse_parameters(ZEND_NUM_ARGS(), "z", &arg);
 		assert(res == SUCCESS);
 		if (Z_TYPE_P(arg) == IS_NULL) {
+			printf("Z_TYPE_P(arg) == IS_NULL\n\n\n");
 			no_arg_version = true;
 			ZEND_NUM_ARGS() = 0; /* pretend we don't have any argument */
 		} else {
+			printf("Z_TYPE_P(arg) != IS_NULL\n\n\n");
 			no_arg_version = false;
 		}
 	}
 
 	if (no_arg_version) {
+		printf("no_arg_version\n\n\n");
 		_breakiter_no_args_ret_int32("breakiter_next",
 				&BreakIterator::next,
 				INTERNAL_FUNCTION_PARAM_PASSTHRU);
 	} else {
+		printf("with_arg_version\n\n\n");
 		_breakiter_int32_ret_int32("breakiter_next",
 				&BreakIterator::next,
 				INTERNAL_FUNCTION_PARAM_PASSTHRU);
