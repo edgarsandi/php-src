@@ -214,11 +214,6 @@ static bc_num split_bc_num(bc_num num) {
 	if (num->n_refs >= 1) {
 		return num;
 	}
-	newnum = _bc_new_num_ex(0, 0, 0);
-	*newnum = *num;
-	newnum->n_refs = 1;
-	num->n_refs--;
-	return newnum;
 }
 /* }}} */
 
