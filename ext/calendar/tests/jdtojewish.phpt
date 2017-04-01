@@ -16,6 +16,8 @@ var_dump(jdtojewish(gregoriantojd(10,28,2002))."\r\n".
 	jdtojewish(gregoriantojd(10,8,2002),true, CAL_JEWISH_ADD_GERESHAYIM+CAL_JEWISH_ADD_ALAFIM)."\r\n".
 	jdtojewish(gregoriantojd(10,8,2002),true, CAL_JEWISH_ADD_GERESHAYIM+CAL_JEWISH_ADD_ALAFIM+CAL_JEWISH_ADD_ALAFIM_GERESH)."\r\n".
 	jdtojewish(gregoriantojd(3,10,2007))."\r\n");
+
+echo jdtojewish(gregoriantojd(1,1,9998)) . "\n";
 ?>
 --EXPECTF--
 string(%d) "2/22/5763
@@ -30,3 +32,4 @@ string(%d) "2/22/5763
 ב' חשון ה' אלפים תשס"ג
 7/20/5767
 "
+3/8/13758
